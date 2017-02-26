@@ -1,0 +1,446 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Phelps Chou
+ * @date    2017-01-10 17:05:28
+ * @version $Id$
+ */
+
+/***第一部分样式，重置默认***/
+html,body,h1,h2,h3,h4,ul,ol,li,p{
+    margin: 0;
+    padding: 0;
+}
+*{
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+    color: #666;
+}
+li{
+    list-style-type: none;
+}
+
+
+/***第二部分样式，设置当前页面公共样式***/
+body{
+    font-size: 12px;
+    font-family: Arial,'Microsoft YaHei';
+    color: #666;
+}
+/*清除浮动对父容器高度的影响*/
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+}
+
+
+/***第三部分样式，页面功能区块的样式***/
+#fm{
+    position: absolute;
+    top: 80px;
+    left: 430px;
+}
+#fm .panel-min{
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: -40px;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    font-size: 20px;
+    background-color: #000;
+    text-shadow: 0 0 10px #fff;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+#fm .rotate-min{
+    animation-name: rotate-min;
+    animation-duration: 7s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+    color: #fff;
+    text-shadow: 0 0 10px #fff;
+}
+@keyframes rotate-min {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.panel{
+    display: none;
+    position: relative;
+    background: url("../img/bg.jpg") center center no-repeat;
+    background-size: cover;
+    width: 300px;
+    height: 480px;
+    color: #eee;
+}
+
+/*头部条样式*/
+.header{
+    position: absolute;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    border-bottom: 1px solid rgba(221,221,221,0.5);
+}
+.header .small-fm{
+    position: absolute;
+    left: 10px;
+    height: 30px;
+    width: 30px;
+    font-size: 20px;
+    text-align: center;
+    line-height: 30px;
+    cursor: pointer;
+}
+.header .title{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 140px;
+    text-align: center;
+    cursor: default;
+}
+.header .title p.song-name{
+    font-size: 13px;
+    line-height: 20px;
+    color: #fff;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.header .title p.singer{
+    font-size: 12px;
+    line-height: 15px;
+    color: #aaa;
+}
+
+.header .channels{
+    position: absolute;
+    left: 260px;
+    cursor: pointer;
+    z-index: 8;
+}
+.header .channels .iconfont{
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-size: 25px;
+}
+
+.header .channels ul{
+    display: none;
+    margin-top: 10px;
+    width: 110px;
+    height: 328px;
+    padding: 8px 0;
+    border-top: 8px solid #fff;
+    border-bottom: 8px solid #fff;
+    background-color: #fff;
+    box-shadow: 2px 0px 2px #888;
+    color: #000;
+    overflow: auto;
+}
+.header .channels ul>li{
+    font-size: 13px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+}
+.list-selected{
+    border-left: 5px solid #db4437;
+}
+.header .channels ul>li:hover{
+    background-color: #db4437;
+    color: #fff;
+}
+::-webkit-scrollbar {
+    width: 2px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(187, 187, 187, 0.7);
+    border-radius: 3px;
+}
+
+/*黑胶唱片样式*/
+.main .cd-play{
+    display: block;
+    position: absolute;
+    top: 50px;
+    width: 100%;
+    height: 240px;
+    overflow: hidden;
+}
+.main .cd-play .needle{
+    position: absolute;
+    top: -3px;
+    left: 138px;
+    height: 88px;
+    width: 60px;
+    background: url("../img/needle.png") no-repeat center center;
+    background-size: cover;
+    z-index: 2;
+    transform-origin: 12px 0;
+    transform: rotate(-25deg);
+    transition: all 0.5s;
+}
+
+/*唱针动作*/
+.needle-play{
+    transform: rotate(0deg) !important;
+}
+
+.main .cd-play .disco{
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    margin-left: -100px;
+    background: url("../img/disco.png") no-repeat center center;
+    background-size: cover;
+    height: 200px;
+    width: 200px;
+    z-index: 1;
+    transform-origin: center center;
+}
+.main .cd-play .disco .cover{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 126px;
+    width: 126px;
+    border-radius: 50%;
+    background: url("../img/singer.jpg") no-repeat center center;
+    background-size: cover;
+    transform-origin: center center;
+}
+
+.main .cd-play .disco .current-cover{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 126px;
+    width: 126px;
+    border-radius: 50%;
+    background: no-repeat center center;
+    background-size: cover;
+    transform-origin: center center;
+}
+
+/*黑胶旋转*/
+.main .cd-play .active{
+    animation-name: disco-rotate;
+    animation-duration: 25s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+    animation-direction: normal;
+    animation-iteration-count: infinite;
+}
+@keyframes disco-rotate{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/*歌词界面*/
+.main .lyric {
+    position: absolute;
+    left: 0px;
+    top: 60px;
+    height: 240px;
+    width: 100%;
+    z-index: 99px;
+    display: none;
+}
+
+.main .lyric .lyric-ct {
+    position: absolute;
+    top: 20px;
+    height: 200px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.main .lyric .lyric-ct .lyric-box {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    font-family: Arial, 'Microsoft YaHei';
+    text-align: center;
+    font-size: 14px;
+    line-height: 40px;
+    overflow: hidden;
+    color: rgba(170, 170, 170, 0.7);
+}
+
+.light-lyric {
+    color: #fff;
+}
+
+
+/*控制样式*/
+.footer{
+    position: absolute;
+    width: 100%;
+    height: 130px;
+    bottom: 23px;
+}
+/*音量控制*/
+.footer .volume{
+    position: absolute;
+    bottom: 110px;
+    left: 45px;
+    width: 150px;
+    height: 14px;
+}
+.footer .volume i{
+    font-size: 12px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.footer .volume .volume-bar{
+    position: absolute;
+    top: 1px;
+    left: 20px;
+    height: 12px;
+    width: 106px;
+    cursor: pointer;
+}
+
+.footer .volume .volume-pathway{
+    position: absolute;
+    top: 5px;
+    height: 2px;
+    width: 106px;
+    border-radius: 1px;
+    background-color: rgba(102,102,102,0.6);
+    cursor: pointer;
+}
+.footer .volume .volume-bar .volume-line{
+    float: left;
+    height: 2px;
+    width: 100px;
+    border-radius: 1px 0 0 1px;
+    background-color: rgba(255,255,255,0.7);
+}
+.footer .volume .volume-bar .volume-handle{
+    position: relative;
+    float: right;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: -2px 0;
+    cursor: pointer;
+}
+
+/*歌词显示隐藏控制*/
+.footer .lyric-btn{
+    position: absolute;
+    bottom: 105px;
+    right: 45px;
+    cursor: pointer;
+}
+.footer .lyric-btn i{
+    font-size: 20px;
+}
+
+
+/*进度条*/
+.footer .progress{
+    position: absolute;
+    bottom: 80px;
+    left: 14px;
+    width: 272px;
+    height: 14px;
+}
+.footer .time{
+    position: absolute;
+}
+.footer .full-time{
+    right: 0;
+}
+
+.footer .progress .progress-bar{
+    position: absolute;
+    top: 2px;
+    left: 31px;
+    height: 8px;
+    width: 208px;
+    cursor: pointer;
+}
+.footer .progress .progress-pathway{
+    position: absolute;
+    top: 3px;
+    height: 2px;
+    width: 208px;
+    border-radius: 1px;
+    background-color: rgba(102,102,102,0.6);
+    cursor: pointer;
+}
+.footer .progress .progress-bar .progress-line{
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 0;
+    border-radius: 1px 0 0 1px;
+    background-color: #db4437;
+}
+.footer .progress .progress-bar .progress-handle{
+    position: absolute;
+    float: left;
+    height: 8px;
+    width: 8px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 0 5px #fff;
+    margin: -3px 0;
+}
+
+/*播放控制*/
+.footer .control{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 180px;
+    height: 60px;
+    transform: translateX(-50%);
+}
+.footer .control i{
+    float: left;
+    border: 1px solid #fff;
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 40px;
+    font-size: 17px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.footer .control i:nth-child(2){
+    height: 54px;
+    width: 54px;
+    line-height: 48px;
+    font-size: 25px;
+    margin: 3px 23px;
+}
