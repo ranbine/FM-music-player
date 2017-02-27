@@ -84,7 +84,7 @@ var getMusic = (function(){
 	// 获取频道列表
  	GetMusic.prototype.getChannels = function(){
     	var self = this;
-		$.get('http://api.jirengu.com/fm/getChannels.php').done(function(channelsStr) {
+		$.get('//api.jirengu.com/fm/getChannels.php').done(function(channelsStr) {
 			//服务器返回的是一个符合JSON语法的字符串
 			//console.log(channelsStr);  
 			//变为频道列表的数组，成员是所有列表项，包含name和channel_id的对象
@@ -123,7 +123,7 @@ var getMusic = (function(){
 	// 根据得到的频道信息，获取对应随机歌曲
  	GetMusic.prototype.getAndReset = function(str) {  //参数为发送给服务器的数据，这里应该为channel的ID
  		var self = this;
-	    $.get('http://api.jirengu.com/fm/getSong.php', {channel: str}).done(function(song) {
+	    $.get('//api.jirengu.com/fm/getSong.php', {channel: str}).done(function(song) {
 	        self.Song = JSON.parse(song).song[0];  // 将返回的信息变成一个包含歌曲信息的对象
 	        self.songReset(self.Song);
 	        self.SongArr.push(self.Song);  //将播放的歌曲保存在一个数组中，上一曲可以取到
@@ -272,7 +272,7 @@ var getMusic = (function(){
 	// 根据歌曲信息，获取相应歌词
 	GetMusic.prototype.lyricReset = function(sidstr) {
 	    var self = this;
-	    $.post('http://api.jirengu.com/fm/getLyric.php', {sid: sidstr}).done(function(lyric) {
+	    $.post('//api.jirengu.com/fm/getLyric.php', {sid: sidstr}).done(function(lyric) {
             var Lyric = JSON.parse(lyric).lyric;
             //console.log(Lyric);  //得到一个歌词字符串
             $('.lyric-box>p').remove();
