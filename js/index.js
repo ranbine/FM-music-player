@@ -284,7 +284,7 @@ var getMusic = (function(){
 	//歌词格式化，添加到页面
 	GetMusic.prototype.lyricFormat = function(str) {
 	    var html = '';
-	    var lyricArr = str.split('\n');
+	    var lyricArr = str.split('\n').slice(1);
 	    // console.log(lyricArr);
 	    for (var i = 0; i < lyricArr.length; i++) {
 	    	// 将数组成员前面的所有中括号去掉
